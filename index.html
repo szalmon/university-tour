@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>University Tour — Figma Live Embed</title>
+  <meta name="description" content="Live site that embeds the original Figma design without modifying it."/>
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
+    header { position: sticky; top: 0; z-index: 10; display: flex; gap: 8px; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #e5e7eb; background: rgba(255,255,255,.85); backdrop-filter: blur(8px); }
+    header .title { font-weight: 700; font-size: 14px; }
+    header .actions { display: flex; gap: 8px; }
+    .btn { appearance: none; border: 1px solid #d1d5db; background:#fff; padding: 8px 12px; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: 12px; }
+    .btn.primary { background:#1f6feb; color:#fff; border-color:#1f6feb; }
+    .wrap { height: calc(100% - 52px); }
+    iframe { width: 100%; height: 100%; border: 0; }
+    .note { position: fixed; right: 12px; bottom: 12px; font-size: 12px; padding: 6px 10px; background: rgba(0,0,0,.65); color: #fff; border-radius: 8px; }
+    @media (max-width: 560px) { header { padding: 8px 10px; } .title { display:none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">University Tour — Figma Live</div>
+    <div class="actions">
+      <button class="btn" onclick="location.reload()">Reload</button>
+      <a class="btn primary" id="openFigma" target="_blank" rel="noopener">Open in Figma</a>
+    </div>
+  </header>
+  <div class="wrap">
+    <iframe id="figmaFrame" allowfullscreen></iframe>
+  </div>
+  <div class="note">Tip: set Figma file to “Anyone with the link can view”</div>
+  <script>
+    const rawUrl = "https://www.figma.com/make/e5PX5IMMCeO63lZ7QAfSib/University-Tour-Webpage-Design?node-id=0-1&t=VKQOyd43YSmnpFpr-1";
+    const embedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(rawUrl)}`;
+    document.getElementById('figmaFrame').src = embedUrl;
+    document.getElementById('openFigma').href = rawUrl;
+  </script>
+</body>
+</html>
